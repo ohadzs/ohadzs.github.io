@@ -12,34 +12,34 @@
       padding: 2rem;
       background: #fff;
       color: #111;
+    }
+    pre {
       white-space: pre-wrap;
     }
   </style>
 </head>
 <body>
-  <div id="content">טוען...</div>
+  <pre id="content">טוען...</pre>
 
   <script>
-    async function loadContent() {
-      const params = new URLSearchParams(window.location.search);
-      const file = params.get("file");
+    const params = new URLSearchParams(window.location.search);
+    const file = params.get("file");
 
-      if (!file) {
-        document.getElementById("content").textContent = "אין תוכן.";
-        return;
-      }
-
-      try {
-        const res = await fetch(file);
-        if (!res.ok) throw new Error("Not found");
-        const text = await res.text();
-        document.getElementById("content").textContent = text;
-      } catch (err) {
-        document.getElementById("content").textContent = "שגיאה בטעינת הקובץ.";
-      }
+    if (!file) {
+      document.getElementById("content").textContent = "לא נבחר קובץ.";
+    } else {
+      fetch(`hebrew/${file}`)
+        .then(response => {
+          if (!response.ok) throw new Error("File not found");
+          return response.text();
+        })
+        .then(text => {
+          document.getElementById("content").textContent = text;
+        })
+        .catch(() => {
+          document.getElementById("content").textContent = "שגיאה בטעינה.";
+        });
     }
-
-    loadContent();
   </script>
 </body>
 </html>
