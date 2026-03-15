@@ -28,10 +28,37 @@
             text-align: right;
             direction: rtl;
         }
+        .post.hidden {
+            display: none;
+        }
         .post a {
             font-size: 18px;
             color: inherit;
             text-decoration: underline;
+        }
+        .tags-filter {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .tag-btn {
+            font-family: 'Alef', sans-serif;
+            padding: 5px 14px;
+            border: 1px solid #888;
+            border-radius: 16px;
+            background: transparent;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.15s;
+        }
+        .tag-btn:hover {
+            background: #eee;
+        }
+        .tag-btn.active {
+            background: #333;
+            color: #fff;
+            border-color: #333;
         }
     </style>
 </head>
@@ -39,113 +66,162 @@
     <h1>שלום חברים</h1>
     <p>ברוכים הבאים</p>
     
+    <!-- Tags filter -->
+    <div class="tags-filter" id="tags-filter"></div>
+
     <!-- Posts list -->
     
     <div id="posts">
-        <div class="post">
+        <div class="post" data-tags="אתיקה,אושר">
             <a href="2026/mar/15.html">15/03/2026 - עונש מוות</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="תרבות">
             <a href="2026/feb/13.html">13/02/2026 - תרבות 2</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="תרבות">
             <a href="2026/feb/05.html">05/02/2026 - השכל הישר וסוף העולם</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="דטרמיניזם">
             <a href="2026/feb/04.html">04/02/2026 - דטרמיניזם 2</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="">
             <a href="2026/feb/03.html">03/02/2026 - ערב יום שבת בסלטה, ארגנטינה</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="">
             <a href="2026/jan/20.html">20/01/2026 - חרטה</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="מהלך שני">
             <a href="2026/jan/05.html">05/01/2026 - טעמי המצוות</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="מהלך שני">
             <a href="2025/dec/27.html">27/12/2025 - אמונה</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="">
             <a href="2025/dec/13.html">13/12/2025 - נתינה</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="">
             <a href="2025/dec/11.html">11/12/2025 - המדינה</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="">
             <a href="2025/nov/30.html">30/11/2025 - אהבה עצמית</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="">
             <a href="2025/nov/20.html">20/11/2025 - שיפוטית וביקורתיות</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="ויפאסנה">
             <a href="2025/nov/13.html">13/11/2025 - סטטוס ויפאסנה</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="">
             <a href="2025/nov/03.html">03/11/2025 - אלוהים מתעטש</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="">
             <a href="2025/oct/02.html">2/10/2025 - מערכות יחסים</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="דטרמיניזם,אושר">
             <a href="2025/sep/30.html">30/9/2025 - דטרמיניזם</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="">
             <a href="2025/sep/24.html">24/9/2025 - הנסיך</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="">
             <a href="2025/sep/17.html">17/9/2025 - אדריכלות וסיפוק</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="">
             <a href="2025/sep/11.html">11/9/2025 - משמעת צבאית</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="אתיקה">
             <a href="2025/sep/09.html">9/9/2025</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="מהלך ראשון">
             <a href="2025/sep/04.html">4/9/2025 - עזרה</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="מהלך ראשון,אפיסטמולוגיה">
             <a href="2025/aug/30.html">30/08/2025 - שיח ביקורתי</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="">
             <a href="2025/aug/29.html">29/08/2025 - משחקים</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="מהלך ראשון">
             <a href="2025/aug/28.html">28/08/2025 - בחירות</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="אפיסטמולוגיה">
             <a href="2025/aug/23.html">23/08/2025 - דע את עצמך</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="">
             <a href="2025/aug/20.html">20/08/2025</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="אפיסטמולוגיה">
             <a href="2025/aug/17.html">17/08/2025 - תורת ההכרה</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="ויפאסנה">
             <a href="2025/aug/16.html">15-16/08/2025 - ויפאסנה</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="מהלך ראשון">
             <a href="2025/aug/03-02.html">03/08/2025 ערב</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="מהלך ראשון">
             <a href="2025/aug/03.html">03/08/2025 - מטרות</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="מהלך ראשון">
             <a href="2025/aug/01.html">01/08/2025</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="מהלך ראשון">
             <a href="2025/jul/30.html">30/07/2025</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="מהלך ראשון">
             <a href="2025/jul/29.html">29/07/2025</a>
         </div>
-        <div class="post">
+        <div class="post" data-tags="מהלך ראשון">
             <a href="2025/jul/28.html">28/07/2025 - היי</a>
         </div>
     </div>
 
     <hr>
+
+    <script>
+    (function() {
+        var posts = document.querySelectorAll('.post[data-tags]');
+        var allTags = new Set();
+        posts.forEach(function(post) {
+            var tags = post.getAttribute('data-tags');
+            if (tags) tags.split(',').forEach(function(t) { if (t.trim()) allTags.add(t.trim()); });
+        });
+
+        var container = document.getElementById('tags-filter');
+        var allBtn = document.createElement('button');
+        allBtn.className = 'tag-btn active';
+        allBtn.textContent = 'הכל';
+        container.appendChild(allBtn);
+
+        var sortedTags = Array.from(allTags).sort();
+        sortedTags.forEach(function(tag) {
+            var btn = document.createElement('button');
+            btn.className = 'tag-btn';
+            btn.textContent = tag;
+            btn.setAttribute('data-tag', tag);
+            container.appendChild(btn);
+        });
+
+        var activeTag = null;
+
+        container.addEventListener('click', function(e) {
+            if (!e.target.classList.contains('tag-btn')) return;
+            container.querySelectorAll('.tag-btn').forEach(function(b) { b.classList.remove('active'); });
+            e.target.classList.add('active');
+
+            var tag = e.target.getAttribute('data-tag');
+            activeTag = tag || null;
+
+            posts.forEach(function(post) {
+                if (!activeTag) {
+                    post.classList.remove('hidden');
+                } else {
+                    var postTags = (post.getAttribute('data-tags') || '').split(',').map(function(t) { return t.trim(); });
+                    post.classList.toggle('hidden', postTags.indexOf(activeTag) === -1);
+                }
+            });
+        });
+    })();
+    </script>
 </body>
 </html> 
